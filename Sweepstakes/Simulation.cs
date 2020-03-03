@@ -11,6 +11,7 @@ namespace Sweepstakes
         public void RunSimulation()
         {
             CreateMarketingFirmWithManager();
+            
         }
         public void CreateMarketingFirmWithManager()
         {
