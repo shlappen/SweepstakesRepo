@@ -40,6 +40,7 @@ namespace Sweepstakes
             }
             manager.InsertSweepstakes(sweepstake);
             sweepstake.PrintContestantInfo(sweepstake.PickWinner());
+            sweepstake.Notify();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Sweepstakes
             contestant.registrationNumber++;
             contestant.firstName = UserInterface.GetUserInputFor("first name.");
             contestant.lastName = UserInterface.GetUserInputFor("last name.");
-            contestant.lastName = UserInterface.GetUserInputFor("email address.");
+            contestant.emailAddress = UserInterface.GetUserInputFor("email address.");
             UserInterface.DisplayRegistrationNumber(contestant.registrationNumber);
             contestants.Add(contestant.registrationNumber, contestant);
         }
@@ -41,6 +41,7 @@ namespace Sweepstakes
             List<int> keyList = new List<int>(contestants.Keys);
             Random rand = new Random();
             int randomKey = keyList[rand.Next(keyList.Count)]; ;
+            contestants[randomKey].isWinner = true;
             return contestants[randomKey];
         }
 
@@ -50,5 +51,19 @@ namespace Sweepstakes
             Console.WriteLine($"Congratulations {contestant.firstName} {contestant.lastName}, number {contestant.registrationNumber}");
             Console.WriteLine($"{contestant.emailAddress}");
         }
+
+        public void Notify()
+        {
+            foreach (KeyValuePair<int, Contestant> contestant in contestants)
+            {
+                if (contestant.Value.isWinner == false)
+                {
+                    Console.WriteLine("Thank you for playing, better luck next time.");
+                }
+            }
+
+        }
+
+
     }
 }
