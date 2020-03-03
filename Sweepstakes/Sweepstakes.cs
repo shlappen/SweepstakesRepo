@@ -22,21 +22,31 @@ namespace Sweepstakes
         public Sweepstakes(string name)
         {
             this.name = name;
+            contestants = new Dictionary<int, Contestant>();
         }
 
         public void RegisterContestant(Contestant contestant)
         {
-            //this will add a contestant to a stoack or queue? and give them a registration number
+            new Contestant();
+            contestant.firstName = UserInterface.GetUserInputFor("first name.");
+            contestant.lastName = UserInterface.GetUserInputFor("last name.");
+            contestant.lastName = UserInterface.GetUserInputFor("email address.");
+            UserInterface.DisplayRegistrationNumber(contestant.registrationNumber++);
+            contestants.Add(contestant.registrationNumber, contestant);
         }
 
         public Contestant PickWinner()
         {
-
+            Random rand = new Random();
+            Contestant contestant = contestants[rand.Next(contestants.Count)];
+            return contestant;
         }
 
         public void PrintContestantInfo(Contestant contestant)
         {
-
+            Console.WriteLine($"WE HAVE A WINNER!");
+            Console.WriteLine($"Congratulations {contestant.firstName} {contestant.lastName}, number {contestant.registrationNumber}");
+            Console.WriteLine($"{contestant.emailAddress}");
         }
     }
 }

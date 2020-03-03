@@ -10,6 +10,9 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
+            new Simulation();
+            Console.ReadLine();
+
         }
     }
 }
