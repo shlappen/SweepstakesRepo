@@ -17,8 +17,6 @@ namespace Sweepstakes
                 return Name;
             }
         }
-
-
         public MarketingFirm(ISweepstakesManager manager, string name)
         {
             this.manager = manager;

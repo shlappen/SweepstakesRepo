@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace Sweepstakes
 {
@@ -58,7 +61,14 @@ namespace Sweepstakes
             {
                 if (contestant.Value.isWinner == false)
                 {
-                    Console.WriteLine("Thank you for playing, better luck next time.");
+                    var message = new MimeMessage();
+                    message.From.Add(new MailboxAddress("Shae Lappen", "shaelappen@gmail.com"));
+                    message.To.Add(new MailboxAddress($"{contestant.Value.firstName} {contestant.Value.lastName}", $"{contestant.Value.emailAddress}"));
+                    message.Subject = "Sweepstakes";
+                    message.Body = new TextPart("plain")
+                    {
+                        Text = $@"Dear {contestant.Value.firstName}, we have selected a winner for the sweepstakes.  Thank you for playing!"
+                    };
                 }
             }
 
