@@ -23,23 +23,26 @@ namespace Sweepstakes
         {
             this.name = name;
             contestants = new Dictionary<int, Contestant>();
+
         }
 
         public void RegisterContestant(Contestant contestant)
         {
-            new Contestant();
+            contestant.registrationNumber++;
             contestant.firstName = UserInterface.GetUserInputFor("first name.");
             contestant.lastName = UserInterface.GetUserInputFor("last name.");
             contestant.lastName = UserInterface.GetUserInputFor("email address.");
-            UserInterface.DisplayRegistrationNumber(contestant.registrationNumber++);
+            UserInterface.DisplayRegistrationNumber(contestant.registrationNumber);
             contestants.Add(contestant.registrationNumber, contestant);
         }
 
         public Contestant PickWinner()
         {
+            List<int> keyList = new List<int>(contestants.Keys);
+
             Random rand = new Random();
-            Contestant contestant = contestants[rand.Next(contestants.Count)];
-            return contestant;
+            int randomKey = keyList[rand.Next(keyList.Count)]; ;
+            return contestants[randomKey];
         }
 
         public void PrintContestantInfo(Contestant contestant)

@@ -10,7 +10,8 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
-            new Simulation();
+            Simulation simulation = new Simulation();
+            simulation.RunSimulation();
             Console.ReadLine();
 
         }

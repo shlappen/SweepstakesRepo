@@ -8,15 +8,17 @@ namespace Sweepstakes
 {
     public class Simulation
     {
-
         public void RunSimulation()
         {
             CreateMarketingFirmWithManager();
         }
         public void CreateMarketingFirmWithManager()
         {
-            MarketingFirm marketingFirm = new MarketingFirm(ManagerFactory.GetManager(UserInterface.ChooseManagerPrompt()));
+            string marketingFirmName = UserInterface.GetUserInputFor("marketing firm's name.");
+            ISweepstakesManager sweepstakesManager = ManagerFactory.GetManager(UserInterface.ChooseManagerPrompt());
+            MarketingFirm marketingFirm = new MarketingFirm(sweepstakesManager, marketingFirmName);
             marketingFirm.CreateSweepstake();
+            //sweepstakesManager.GetSweepstakes();
         }
     }
 }

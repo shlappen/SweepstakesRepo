@@ -33,5 +33,11 @@ namespace Sweepstakes
             return Console.ReadLine();
         }
 
+        public static int NumberOf(string items)
+        {
+            Console.WriteLine($"How many {items} would you like to add?");
+            return Convert.ToInt32(Console.ReadLine());
+        }
+
     }
 }
